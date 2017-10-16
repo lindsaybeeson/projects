@@ -3,7 +3,7 @@
 I'm making some things!
 
 ## Onemonth Javascript
-My homework was fun for this [course](https://onemonth.com/courses/javascript)
+My homework was fun for [this course](https://onemonth.com/courses/javascript)
 
 * **Week one:** [Funny things from my kid!](/projects/onemonth%20javascript/week%201/my%20random%20storytime/index.html) (Refresh the page for new stories)
 * **Week two:** [Giphy search](/projects/onemonth%20javascript/week%202/GiphySearch/index.html) (It's broken ¯\\\_(ツ)_/¯)
