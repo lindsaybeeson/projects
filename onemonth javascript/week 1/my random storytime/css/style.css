@@ -1,0 +1,30 @@
+
+/* body {
+	background: #FF6600;
+	padding: 15px;
+	font-size: 30px;
+} */
+body {
+	/*background: #BBB;*/
+	background-image: url("kiddo.jpg");
+	background-repeat: no-repeat;
+   	background-size: 100%;
+	color: white;
+	width: 500px;
+	margin: 1em;
+}
+
+body {
+	font-family: 'Montserrat';
+	font-size: 65px;
+	color: #333;
+	/*opacity: .7;*/
+}
+
+footer {
+	font-size: 15px;
+	text-transform: uppercase;
+	padding-top: 4em;
+	color: #555;
+
+}

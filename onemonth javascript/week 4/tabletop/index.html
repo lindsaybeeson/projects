@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabletop.js</title>
+</head>
+<body>
+
+
+<script type="text/javascript" src="js/main.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<script type='text/javascript'>    
+  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/189lxZ9JFxYTeHLPPUW5vtnxGl7reeF7QNgr2OUKUlus/edit?usp=sharing';
+
+  function init() {
+    Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+//    alert('Successfully processed!')
+    console.log(data);
+//    rows = data;
+    data.forEach(function(data){
+		document.write(data.Category + " " + data.Spending + "</br>");
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', init)
+</script>
+
+</body>
+</html>

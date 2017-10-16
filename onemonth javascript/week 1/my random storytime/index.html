@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Storytime with Kiddo!?">
+		<meta name="keywords" content="dragons, pricnesses, butts">
+
+		<title>Storytime</title>
+		
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script>
+		
+			// List of characters
+			var protagonists = [
+				"princess",
+				"dragon",
+				"frog",
+				"airplane",
+				"unicorn"
+			];
+
+			// List of possible actions
+			var journeys = [
+				"poop on you",
+				"make a rainbow",
+				"climb a tree",
+				"fly on an airplane",
+				"run run run"
+			];
+
+			// List of endings
+			var climaxes = [
+				"save the bug",
+				"go to sleep",
+				"poop some more",
+				"play with their friend",
+				"eat ice cream"
+			];
+
+			var randomNumber1 = Math.floor(Math.random()*protagonists.length);
+			var randomNumber2 = Math.floor(Math.random()*journeys.length);
+			var randomNumber3 = Math.floor(Math.random()*climaxes.length);
+
+
+			
+			var hero = protagonists[randomNumber1];
+			var plot = journeys[randomNumber2];
+			var ending = climaxes[randomNumber3];
+			console.log(randomNumber1, randomNumber2, randomNumber3);
+
+			document.write("The <strong>" + hero + "</strong> decided to <strong>" + plot + "</strong> so they could " + "<strong>" + ending + "</strong>.");
+		
+		</script>
+	</head>
+	<footer>
+		[Care of actual things my kid says. Kind of.]<!-- PAGE CONTENT WILL BE PRINTED HERE --> 
+	</footer>
+</html>

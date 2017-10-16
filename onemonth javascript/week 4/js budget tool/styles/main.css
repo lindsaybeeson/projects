@@ -1,0 +1,9 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+	margin: 1%;
+	background-color: lightgray;
+	color: black;
+	font-family: Montserrat, sans-serif;
+}

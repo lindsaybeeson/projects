@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Oprah Likes You. And so do other people.</title>
+
+		<style>
+			
+			/* Basic CSS comment */	
+			body {
+				/*background: #BBB;*/
+				background-image: url("oprah.jpg");
+				background-repeat: no-repeat;
+    			background-size: 100%;
+				color: white;
+				/*width: 960px;*/
+				margin: 3em;
+			}
+
+			h1 {
+				font-family: 'Montserrat';
+				font-size: 75px;
+				color: #fff;
+				opacity: .7;
+			}
+
+		</style>
+
+		<script>
+			/* this is an event */	
+			/* alert("I'm annoying"); */
+
+			var username = prompt("Hiya! What's your name?");
+			var coffee = new Array("Espresso " + "<sub>" + '<image src="espresso.png">' + "</sub>","Latte " + "<sub>" + '<image src="latte.png">' + "</sub>","Americano " + "<sub>" + '<image src="americano.png">' + "</sub>");
+			var randomNumber = Math.floor(Math.random()*coffee.length);
+			var winnings = coffee[randomNumber];
+			console.log(username);
+			
+			if((username==="Lindsay") || (username==="Chris")) {
+				document.write("<h1>" + username + "! You won " + "<br>" + "a free " + winnings + "</br>" + "every day for a year!</h1>");
+			}
+			else {
+				document.write("<h1> Hello " + username + "!</h1>");
+
+			}
+
+
+		</script>
+
+
+	</head>
+ 	
+	<body>
+	</body>
+
+</html>
