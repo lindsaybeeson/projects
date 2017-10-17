@@ -26,7 +26,7 @@ function query(searchGiphy) {
 function imageQuery(searchInput) {
 
 	var key = "suAJeNo0a0GgMVGm7nJ2WUzlN20CkacC";
-	var url = "http://api.giphy.com/v1/gifs/search?q=" + searchInput + "&api_key=" + key
+	var url = "https://api.giphy.com/v1/gifs/search?q=" + searchInput + "&api_key=" + key
 
 	// AJAX Request
 	var GiphyAJAXCall = new XMLHttpRequest();
