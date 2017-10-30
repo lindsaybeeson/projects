@@ -1,4 +1,5 @@
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1yR6hJ1nAZe29cWaaYoaEiGuU4St1UlBNPTmI8KMH_D8/edit?usp=sharing';
+//var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1i3YFZ8LhjB4rLOpD0LsCswUzACNX4xVHIkOf5HAZerA/edit?usp=sharing';
 
 var body = document.querySelector('body');
 var container = document.createElement('div');
@@ -7,64 +8,69 @@ body.appendChild(container);
 
 
 // Initialize Tabletop
-
 function init() {
 	Tabletop.init( { key: publicSpreadsheetUrl,
                  	 callback: initSelect,
+                 	 orderby: 'budgetitem',
                  	 simpleSheet: true } )
 	}
-
 
 // Function to intialize select options via data from spreadsheet
 function initSelect(data) {
 
 	var filteredData = data.filter(function(datum) {
-
 		return datum['Budget Item'] !== '';
-
 	});
 
-	console.log(filteredData);
-
-
-	// Find the select and add an event listener to send data from selected option into function
-	// for use in rendering chart.
+	// Find the select and add an event listener to send data from selected option into function for use in rendering chart.
 	var select = document.querySelector('.select_list');
 	select.onchange = changeEventHandler;
 
-	filteredData.forEach(function(filteredData){
+	filteredData.forEach(function(filteredDatum){
 
 		var option = document.createElement('option');
-		var budgetItem = filteredData['Budget Item'];
+		var budgetItem = filteredDatum['Budget Item'];
 		option.value = budgetItem;
 		option.text = budgetItem;
 		select.appendChild(option);
 	});
 
 	// Function to call function handling rendering of charts
-	function changeEventHandler(event) {
+	function changeEventHandler(event) { 
 		var selection = event.target.value;
 		renderChart(selection, filteredData);
    	}
 }
 
-// Function to call drawChart given a selection (category) and data from spreadsheet
+// Function to call drawColumnChart given a selection (category) and data from spreadsheet
 function renderChart(selection, filteredData) {
 	// Loop through array of objects and if the key matches selection, use data for drawing chart
 	filteredData.forEach(function(filteredData){
+		var aboutSpending = document.querySelector('.about_spending');
+		var factoids = document.querySelector('.factoids');
 		var budgetItem = filteredData['Budget Item'];
+		var daySpending = filteredData['Spending / day'];
+		var dayBudgeted = filteredData['Budgeted / day'];
 		var monthSpending = filteredData['Avg Mo Spending'];
 		var monthBudgeted = filteredData['Budgeted / mo'];
+		var dayRemaining = filteredData['Remaining / day'];
+		var weekRemaining = filteredData['Remaining / week'];
+		var monthRemaining = filteredData['Remaining / month'];
+		var spentYTD = filteredData['Spending YTD'];
+		var budgetYTD = filteredData['Budgeted YTD'];
+		var spendToday = (parseFloat(budgetYTD) - parseFloat(spentYTD)).toFixed(2);
 
 		if (budgetItem === selection) {
-			drawChart(monthSpending, monthBudgeted)
+
+			console.log(parseFloat(spentYTD));
+
+			aboutSpending.innerHTML = 'You can spend <span class="amount">$' + spendToday + '</span> today on ' + budgetItem + ' without going over budget.';
+			factoids.innerHTML = 'So far this year, you\'ve spent $' + spentYTD + ' on ' + budgetItem + '.';
+
+			drawColumnChart(daySpending, dayBudgeted, dayRemaining);
 		};
 	});
 }
-
-
-window.addEventListener('DOMContentLoaded', init)
-
 
 // MAKING CHART
 
@@ -72,28 +78,49 @@ window.addEventListener('DOMContentLoaded', init)
 google.charts.load('current', {'packages':['corechart']});
 
 // Set a callback to run when the Google Visualization API is loaded.
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(renderChart);
 
-// Callback that creates and populates a data table,
-// instantiates the pie chart, passes in the data and
-// draws it.
-function drawChart(spent, budgeted) {
+// Callback that creates and populates a data table, instantiates the column chart, passes in the data and draws it.
+function drawColumnChart(spent, budgeted, remaining) {
 
 		var datum = google.visualization.arrayToDataTable([
 		['Item','Amount',{role: 'style'}],
-		['Spent', parseFloat(spent),'grey'],
-		['Budgeted', parseFloat(budgeted),'darkgrey']
+		['Spent', parseFloat(spent),'#a2c4c9'],
+		['Budgeted', parseFloat(budgeted),'#d2cdc8'],
+		['Remaining', parseFloat(remaining),'#b4a7d6']
 		]);
 
 	// Set chart options
-	var options =	{title:'Monthly',
-					width:600,
-					height:400,
-					colors:['grey'],
-					backgroundColor:'lightgrey'};
+	var options = {
+		title:'Average Daily Overview',
+		legend: {position: 'none'},
+		backgroundColor:'#e0dbd6',
+		fontName: 'Montserrat',
+		chartArea:{width:'80%',height:'70%'},
+		vAxis:{baseline:0},
+		titleTextStyle: {
+			color: '#666666',
+			fontName: 'Montserrat',
+			fontSize: 24,
+			bold: true
+			}
+		};
 
-	// Instantiate and draw our chart, passing in some options.
-	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-	chart.draw(datum, options);
+	// Instantiate and draw your chart, passing in some options.
+	function resize () {
+		var columnChart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+		columnChart.draw(datum, options);
+	};
+
+	resize();
+	window.addEventListener('resize',resize);
+
+
+
 }
 
+function test() {
+	console.log("hello");
+}
+
+window.addEventListener('DOMContentLoaded', init)
