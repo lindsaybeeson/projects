@@ -46,19 +46,31 @@ function initSelect(data) {
 function renderChart(selection, filteredData) {
 	// Loop through array of objects and if the key matches selection, use data for drawing chart
 	filteredData.forEach(function(filteredData){
+		
+		//Element variables
 		var aboutSpending = document.querySelector('.about_spending');
 		var factoids = document.querySelector('.factoids');
+
 		var budgetItem = filteredData['Budget Item'];
 		var daySpending = filteredData['Spending / day'];
 		var dayBudgeted = filteredData['Budgeted / day'];
-		var monthSpending = filteredData['Avg Mo Spending'];
+/*		var monthSpending = filteredData['Avg Mo Spending'];
 		var monthBudgeted = filteredData['Budgeted / mo'];
-		var dayRemaining = filteredData['Remaining / day'];
-		var weekRemaining = filteredData['Remaining / week'];
+*/		var dayRemaining = filteredData['Remaining / day'];
+/*		var weekRemaining = filteredData['Remaining / week'];
 		var monthRemaining = filteredData['Remaining / month'];
-		var spentYTD = filteredData['Spending YTD'];
+*/		var spentYTD = filteredData['Spending YTD'];
 		var budgetYTD = filteredData['Budgeted YTD'];
 		var spendToday = (parseFloat(budgetYTD) - parseFloat(spentYTD)).toFixed(2);
+
+		//Ledger values
+		var date = filteredData['Date'];
+		var merchant = filteredData['Payee or Receiving Account'];
+		var account = filteredData['Accont'];
+		var debit = filteredData['Debit'];
+		var credit = filteredData['Credit'];
+
+
 
 		if (budgetItem === selection) {
 
@@ -68,6 +80,7 @@ function renderChart(selection, filteredData) {
 			factoids.innerHTML = 'So far this year, you\'ve spent $' + spentYTD + ' on ' + budgetItem + '.';
 
 			drawColumnChart(daySpending, dayBudgeted, dayRemaining);
+
 		};
 	});
 }
@@ -84,20 +97,20 @@ google.charts.setOnLoadCallback(renderChart);
 function drawColumnChart(spent, budgeted, remaining) {
 
 		var datum = google.visualization.arrayToDataTable([
-		['Item','Amount',{role: 'style'}],
-		['Spent', parseFloat(spent),'#a2c4c9'],
-		['Budgeted', parseFloat(budgeted),'#d2cdc8'],
-		['Remaining', parseFloat(remaining),'#b4a7d6']
+		['Item','Amount',{role: 'style'},{role:'annotation'}],
+		['Spent',parseFloat(spent),'#a2c4c9',parseFloat(spent),],
+		['Budgeted',parseFloat(budgeted),'#d2cdc8',parseFloat(budgeted)],
+		['Remaining',parseFloat(remaining),'#b4a7d6',parseFloat(remaining)]
 		]);
 
 	// Set chart options
 	var options = {
-		title:'Average Daily Overview',
+//		title:'Average Daily Overview',
 		legend: {position: 'none'},
 		backgroundColor:'#e0dbd6',
 		fontName: 'Montserrat',
 		chartArea:{width:'80%',height:'70%'},
-		vAxis:{baseline:0},
+		vAxis:{baseline:0,textPosition:'none'},
 		titleTextStyle: {
 			color: '#666666',
 			fontName: 'Montserrat',
