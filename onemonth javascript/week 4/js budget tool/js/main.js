@@ -106,18 +106,19 @@ function drawColumnChart(spent, budgeted, remaining) {
 	// Set chart options
 	var options = {
 //		title:'Average Daily Overview',
+		fontSize: 48,
 		legend: {position: 'none'},
 		backgroundColor:'#e0dbd6',
 		fontName: 'Montserrat',
 		chartArea:{width:'80%',height:'70%'},
 		vAxis:{baseline:0,textPosition:'none'},
-		titleTextStyle: {
+/*		titleTextStyle: {
 			color: '#666666',
 			fontName: 'Montserrat',
 			fontSize: 24,
 			bold: true
 			}
-		};
+*/		};
 
 	// Instantiate and draw your chart, passing in some options.
 	function resize () {

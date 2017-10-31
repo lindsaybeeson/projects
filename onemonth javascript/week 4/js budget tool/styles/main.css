@@ -11,13 +11,14 @@ html, body {
 
 .select_list {
 	width: 80%;
-	height: 3em;
+	height: 15vmin;
 	display: block;
 	clear: all;
+	padding-left: 20px;
 	margin: auto;
 	background-color: #e0dbd6;
 	color: #666666;
-	font-size: 1.5em;
+	font-size: 7vmin;
 	font-family: Montserrat, sans-serif;
 	font-weight: bold;
 	text-transform: capitalize;
@@ -28,7 +29,7 @@ html, body {
 
 .about_spending {
 	font-family: Montserrat, sans-serif;
-	font-size: 2em;
+	font-size: 10vmin;
 	font-weight: bold;
 	color: #d2cdc8;
 	text-align: center;
@@ -63,7 +64,7 @@ html, body {
 	margin-right: auto;
 	background-color: white;
 	width: 80%;
-	min-height: 60%;
+	min-height: 50%;
 	background-size: contain;
 }
 
