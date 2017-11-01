@@ -3,14 +3,21 @@
 <head>
 	<title>Personal Budget Tracker</title>
 	<link rel='stylesheet' href='styles/main.css'>
+	<link rel='stylesheet' href='styles/reset.css'>
 
 </head>
 <body>
 
-
-	<select class="select_list" required> <!--Supplement an id here instead of using 'name'-->
-		<option value="" disabled selected hidden>Please select a category</option>
-	</select>
+	<div class="options">
+		<select class="list budget_list" required> <!--Supplement an id here instead of using 'name'-->
+			<option value="" disabled selected hidden>Please select a category</option>
+		</select>
+		<select class="list period_list">
+			<option>Daily</option>
+			<option>Weekly</option>
+			<option>Monthly</option>
+		</select>
+	</div>
 		<div class="about_spending" id="about_div"></div>
 		<div class="chart" id="chart_div"></div>
 		<div class="factoids" id="factoid_div"></div>

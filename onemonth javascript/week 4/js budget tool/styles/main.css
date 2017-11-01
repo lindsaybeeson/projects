@@ -3,69 +3,74 @@ html, body {
 	height: 100%;
 	width: 100%;
 	min-height: 100%;
-	margin-top: 20px;
 	background-color: #fcf7f2;
 	color: black;
 	font-family: Montserrat, sans-serif;
 }
 
-.select_list {
-	width: 80%;
-	height: 15vmin;
+.options {
+	width: 80vw;
+	height: 10vh;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
 	display: block;
-	clear: all;
-	padding-left: 20px;
-	margin: auto;
+/*	clear: all;
+*/	margin: auto;
+}
+
+.list {
+	width: 38vw;
+	height: 100%;
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
 	background-color: #e0dbd6;
 	color: #666666;
-	font-size: 7vmin;
+	font-size: 3vmin;
 	font-family: Montserrat, sans-serif;
 	font-weight: bold;
 	text-transform: capitalize;
 	text-align: center;
-	border: 1px solid #e0dbd6;
+	border: 0px solid #e0dbd6;
 	border-radius: 5px;
+}
+
+.budget_list {
+	margin-right: 3vw;
 }
 
 .about_spending {
 	font-family: Montserrat, sans-serif;
-	font-size: 10vmin;
+	font-size: 5vmin;
 	font-weight: bold;
 	color: #d2cdc8;
 	text-align: center;
 	display: block;
+	line-height: 1.25em;
+	padding-bottom: 5vh;
 	margin-right: auto;
 	margin-left: auto;
-	margin-top: 40px;
-	margin-bottom: 40px;
-	width: 80%;
-	min-height: 20px;
-}
-
-.amount {
-	color: #8e7cc3;
-}
-
-.factoids {
-	font-family: Montserrat, sans-serif;
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	width: 80%;
-	min-height: 20px;
+	width: 80vw;
+	height: 15vh;
 }
 
 .chart {
 	display: block;
-	clear: all;
-	margin-left: auto;
+/*	background-color: lightgreen;
+*/	width: 100vw;
+	height: 60vh;
+}
+
+/*.factoids {
+	font-family: Montserrat, sans-serif;
+	display: block;
 	margin-right: auto;
-	background-color: white;
-	width: 80%;
-	min-height: 50%;
-	background-size: contain;
+	margin-left: auto;
+	width: 80vw;
+}
+*/
+.amount {
+	color: #8e7cc3;
 }
 
 select:required:invalid {

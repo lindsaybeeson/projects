@@ -4,8 +4,9 @@ var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1yR6hJ1nAZe29
 var body = document.querySelector('body');
 var container = document.createElement('div');
 body.appendChild(container);
+var select = document.querySelector('.budget_list');
 
-
+//select.innerHTML = localStorage.getItem('select_list');
 
 // Initialize Tabletop
 function init() {
@@ -23,7 +24,7 @@ function initSelect(data) {
 	});
 
 	// Find the select and add an event listener to send data from selected option into function for use in rendering chart.
-	var select = document.querySelector('.select_list');
+	var select = document.querySelector('.budget_list');
 	select.onchange = changeEventHandler;
 
 	filteredData.forEach(function(filteredDatum){
@@ -34,6 +35,8 @@ function initSelect(data) {
 		option.text = budgetItem;
 		select.appendChild(option);
 	});
+
+//	localStorage.setItem('select_list',select);
 
 	// Function to call function handling rendering of charts
 	function changeEventHandler(event) { 
@@ -77,7 +80,7 @@ function renderChart(selection, filteredData) {
 			console.log(parseFloat(spentYTD));
 
 			aboutSpending.innerHTML = 'You can spend <span class="amount">$' + spendToday + '</span> today on ' + budgetItem + ' without going over budget.';
-			factoids.innerHTML = 'So far this year, you\'ve spent $' + spentYTD + ' on ' + budgetItem + '.';
+			//factoids.innerHTML = 'So far this year, you\'ve spent $' + spentYTD + ' on ' + budgetItem + '.';
 
 			drawColumnChart(daySpending, dayBudgeted, dayRemaining);
 
@@ -106,12 +109,17 @@ function drawColumnChart(spent, budgeted, remaining) {
 	// Set chart options
 	var options = {
 //		title:'Average Daily Overview',
-		fontSize: 48,
+		fontSize: 36,
 		legend: {position: 'none'},
 		backgroundColor:'#e0dbd6',
 		fontName: 'Montserrat',
 		chartArea:{width:'80%',height:'70%'},
-		vAxis:{baseline:0,textPosition:'none'},
+		vAxis:{baseline:0,textPosition:'none',gridlines:{color:'#fcf7f2'}},
+		hAxis:{
+			textStyle:{
+				fontSize: 18,
+				color: '#888888'
+			}}
 /*		titleTextStyle: {
 			color: '#666666',
 			fontName: 'Montserrat',
